@@ -1,18 +1,8 @@
-from telethon import TelegramClient, sync
-import json, datetime
-import config
+from flask import Flask, jsonify
+from telegram import generate_channel_feed
 
-def date_format(message):
-	if type(message) is datetime:
-		return message.strftime("%Y-%m-%d %H:%M:%S")
+app = Flask(__name__)
 
-client = TelegramClient('telegfeed',
-	config.TELEGRAM['app_id'], config.TELEGRAM['api_hash']).start()
-
-channel = client.get_input_entity('mostafamalekian')
-
-msgs = []
-for msg in client.iter_messages(channel, limit=10):
-	msgs.append(msg.to_dict())
-
-print(json.dumps(msgs, default=date_format))
+@app.route('/channel/<channel_id>')
+def channel_feed(channel_id):
+    return jsonify(generate_channel_feed(channel_id))
