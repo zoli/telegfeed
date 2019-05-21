@@ -1,8 +1,12 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, render_template
 from telegram.channel import Channel
 from werkzeug.contrib.atom import AtomFeed
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/<name>')
 def channel_feed(name):
