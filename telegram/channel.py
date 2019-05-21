@@ -3,9 +3,9 @@ from telethon.tl.types import PeerChannel
 from telethon.tl.functions.channels import GetFullChannelRequest
 
 class Channel:
-    def __init__(self, username):
-        self.username = username
-        self.channel = client.get_input_entity(self.username)
+    def __init__(self, name):
+        self.name = name
+        self.channel = client.get_input_entity(self.name)
         self.full_channel = client(GetFullChannelRequest(self.channel))
 
         self.id = self.full_channel.full_chat.id
