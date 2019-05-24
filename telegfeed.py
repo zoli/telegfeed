@@ -9,6 +9,14 @@ def index():
     return render_template('index.html')
 
 @app.route('/<name>')
+def channel(name):
+    channel = Channel(name)
+
+    posts = channel.get_posts()
+
+    return render_template('channel.html', posts=posts)
+
+@app.route('/<name>/feed')
 def channel_feed(name):
     channel = Channel(name)
 
