@@ -1,4 +1,4 @@
 auth:
-	python telegram/client.py
+	python -m telegram.client
 serve:
 	FLASK_APP=telegfeed.py FLASK_ENV=development flask run
