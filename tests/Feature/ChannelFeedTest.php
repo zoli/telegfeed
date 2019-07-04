@@ -18,6 +18,6 @@ class ChannelFeedTest extends TestCase
         $response = $this->get('/channel/mostafamalekian/feed');
 
         $response->assertStatus(200);
-        $this->response->assertHeader('content-type', 'application/xml');
+        $response->assertHeader('content-type', 'text/xml; charset=UTF-8');
     }
 }
