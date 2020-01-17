@@ -12,3 +12,9 @@ use Illuminate\Foundation\Inspiring;
 | simple approach to interacting with each command's IO methods.
 |
 */
+
+Artisan::command('telegram:login', function () {
+    $settings = config('madeline');
+    $MadelineProto = new \danog\MadelineProto\API(public_path().'/session.madeline', $settings);
+    $MadelineProto->start();
+});
