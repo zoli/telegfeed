@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/channel/{name}/feed', function ($name) {
+Route::get('/telegram/{name}/feed', function ($name) {
     $settings = config('madeline');
     $MadelineProto = new \danog\MadelineProto\API(public_path().'/session.madeline', $settings);
     $MadelineProto->start();
